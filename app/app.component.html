@@ -1,0 +1,101 @@
+<alert type="success">
+	<strong>Testing </strong> Old Inline DatePicker in popover with
+	<p><strong>ngx-bootstrap v2.0.2 </strong></p>
+	<p><strong>Bootstrap v4.0.0 </strong></p>
+
+</alert>
+<alert type="info">
+	<p> <strong><a target="_blank" href="https://github.com/valor-software/ngx-bootstrap/issues/3704">Issue 3704</a> </strong> Outside
+		click functionality!
+
+	</p>
+	<p>
+		Outside click is Enabled by default. When date is selected or when tried to change month or year, One would expect popover
+		to be still open, so that they can able to select Time.
+	</p>
+	<p>
+		Expected behaviour of <strong>DateTime </strong> picker can be experienced by disabling outsideclick manually, <strong>[outsideClick]="false" </strong>
+	</p>
+</alert>
+<hr>
+<hr>
+<alert type="success">
+	<strong><a target="_blank" href="https://github.com/valor-software/ngx-bootstrap/issues/3734">Issue 3734</a>  </strong>	Present date is not highlighted properly when another date is selected. Text is just muted like other dates from previous
+	and next month.
+	<p><strong>Bootstrap v4.0.0 </strong></p>
+
+</alert>
+
+
+
+
+<alert type="success">
+	<input type="text" class="form-control" [popover]="popTemplate" placement="bottom" [outsideClick]="true" #popoverRef="bs-popover"
+	 value="{{dateTime}}" (click)="showDate()">
+</alert>
+<hr>
+<hr>
+<alert type="info">
+	<strong><a target="_blank" href="https://github.com/valor-software/ngx-bootstrap/issues/3739">Issue 3739</a>  </strong>	Popover Content is Outside View in Mobile
+</alert>
+<button type="button" class="btn btn-info" popover="TEST!1123456789 Popover Content is Outside View in Mobile" placement="bottom">
+  Click Here -> Content cropped in popover
+</button>
+<hr>
+<hr>
+<alert type="success">
+	<strong><a target="_blank" href="https://github.com/valor-software/ngx-bootstrap/issues/3740">Issue #3740</a>  </strong>	Testing popover in element with innner scroll and outer scroll on window! open popover and inner scroll -> not expected behavior
+</alert>
+<div style=" background-color: lightblue;width: 600px;height: 210px; overflow: scroll;">
+
+	<button type="button" class="btn btn-success" popover="TEST!1123456789 Popover Content is Outside View in Mobile" placement="bottom"> 
+  Click here -> Use Inner Scroll when popover is open
+</button> <br>Inner Scroll Content.
+<br>
+	<button type="button" class="btn btn-success" popover="TEST!1123456789 Popover Content is Outside View in Mobile" placement="bottom">
+  Click here -> Use Inner Scroll when popover is open
+</button>
+<br>
+Inner Scroll Content.
+<br>
+Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>Inner Scroll Content.
+<br>
+</div>
+<hr>
+outsidescroll<br>
+outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>outsidescroll<br>
+
+<ng-template #popTemplate>
+	<datepicker [hidden]="!isDateVisible" [(ngModel)]="date" [minDate]="minDate" [showWeeks]="true" (ngModelChange)="updateDate()"
+	 (selectionDone)="dateSelectionDone()">
+	</datepicker>
+	<timepicker [hidden]="isDateVisible" [(ngModel)]="time" (ngModelChange)="updateTime()" [showMeridian]="isMeridian">
+	</timepicker>
+
+	<div style="padding:5px">
+		<span class="btn-group pull-left" style="margin-right:10px;">
+            <button type=button class="btn btn-sm btn-info" [hidden]="!isDateVisible" (click)="today()">Today</button>
+            <button type=button class="btn btn-sm btn-info" [hidden]="isDateVisible" (click)="now()">Now</button>
+            <button type=button class="btn btn-sm btn-danger" (click)="clear()">Clear</button>
+        </span>
+		<span class="btn-group pull-right">
+            <button type=button class="btn btn-sm btn-default" [hidden]="isDateVisible" 
+            (click)="showDate()">Date
+            </button>
+            <button type=button class="btn btn-sm btn-default" [hidden]="!isDateVisible" 
+            (click)="showTime()">Time
+            </button>
+            <button type=button class="btn btn-sm btn-success" (click)="close()">Close</button>
+        </span> <span class=clearfix></span>
+	</div>
+</ng-template>
